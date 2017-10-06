@@ -1,4 +1,4 @@
-package com.securelink.ssh;
+package com.securelink.ssh.util;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

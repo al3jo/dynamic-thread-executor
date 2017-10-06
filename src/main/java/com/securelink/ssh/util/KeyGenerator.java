@@ -1,4 +1,4 @@
-package com.securelink.ssh;
+package com.securelink.ssh.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ public class KeyGenerator {
     private static final int KEY_SIZE = 2048;
     private static final Logger logger = LoggerFactory.getLogger(KeyGenerator.class);
 
-    static String generate() {
+    public static String generate() {
         String key = null;
         try {
             KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
@@ -27,7 +27,7 @@ public class KeyGenerator {
         return key;
     }
 
-    static int getAvailableCores() {
+    public static int getAvailableCores() {
         return Runtime.getRuntime( ).availableProcessors( );
     }
 }

@@ -1,15 +1,17 @@
-package com.securelink.ssh;
+package com.securelink.ssh.task;
 
+import com.securelink.ssh.util.KeyCache;
+import com.securelink.ssh.util.KeyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Producer implements Runnable {
+public class KeyProduceTask implements Runnable {
 
     private KeyCache cache;
 
-    private static final Logger logger = LoggerFactory.getLogger(Producer.class);
+    private static final Logger logger = LoggerFactory.getLogger(KeyProduceTask.class);
 
-    public Producer(KeyCache cache) {
+    public KeyProduceTask(KeyCache cache) {
         this.cache = cache;
     }
 
