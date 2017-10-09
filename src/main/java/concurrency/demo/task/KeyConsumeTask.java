@@ -14,6 +14,7 @@ public class KeyConsumeTask implements Runnable {
         this.cache = cache;
     }
 
+    @Override
     public void run() {
         try {
             String key = cache.take( );

@@ -26,9 +26,7 @@ public class CacheStatusTask implements Runnable {
         StringJoiner joiner = new StringJoiner("\n");
         joiner.add("")
             .add("STATUS")
-//            .add(fmt("At threshold %d, submitted %d tasks", currentThreshold, numberOfKeysToProduce))
             .add(fmt("Queue [%d/%d]", cache.getSize(), Constants.COMPUTED_CAPACITY))
-//            .add(fmt("Cores [%d/%d]", numberOfKeysToProduce, AVAILABLE_CORES))
             .add(fmt("Time elapsed %s", fmt(System.currentTimeMillis() - startTime)));
         logger.info(joiner.toString());
     }

@@ -15,8 +15,10 @@ public class KeyProduceTask implements Runnable {
         this.cache = cache;
     }
 
+    @Override
     public void run() {
         try {
+            logger.info("Producing 1 key");
             String fingerprint = KeyGenerator.generate();
             cache.put(fingerprint);
             logger.debug("Generated {}", fingerprint);

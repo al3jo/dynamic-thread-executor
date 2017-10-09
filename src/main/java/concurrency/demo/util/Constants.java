@@ -1,7 +1,7 @@
 package concurrency.demo.util;
 
 public class Constants {
-    public static final int KEYS_PER_CORE = 20;
+    public static final int KEYS_PER_CORE = 200;
     public static int COMPUTED_CAPACITY;
     public static int CORES_50;
     public static int CORES_75;

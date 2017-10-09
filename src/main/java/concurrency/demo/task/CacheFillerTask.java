@@ -1,19 +1,22 @@
 package concurrency.demo.task;
 
+import static concurrency.demo.util.Constants.AVAILABLE_CORES;
+import static concurrency.demo.util.Utils.fmt;
 import concurrency.demo.util.KeyCache;
 import concurrency.demo.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class CacheFillerTask implements Runnable {
 
-    private ExecutorService executor;
+    private ScheduledExecutorService executor;
     private KeyCache cache;
 
     private static final Logger logger = LoggerFactory.getLogger(KeyProduceTask.class);
 
-    public CacheFillerTask(KeyCache cache, ExecutorService executor) {
+    public CacheFillerTask(KeyCache cache, ScheduledExecutorService executor) {
         this.cache = cache;
 
         logger.info("Initializing Manager");
@@ -24,12 +27,13 @@ public class CacheFillerTask implements Runnable {
         logger.info("Cache max capacity: {}", Constants.COMPUTED_CAPACITY);
     }
 
+    @Override
     public void run() {
         final Logger logger = LoggerFactory.getLogger(Runnable.class);
         int size = cache.getSize();
 
         // Tasks
-        final KeyProduceTask p = new KeyProduceTask(cache);
+//        final KeyProduceTask p = new KeyProduceTask(cache);
 //            final Consumer c = new Consumer(cache);
 
         int currentThreshold = 0, numberOfKeysToProduce = 0; // what threshold and how many cores?
@@ -47,12 +51,18 @@ public class CacheFillerTask implements Runnable {
             numberOfKeysToProduce = 1;
         }
 
-        submitTasks(numberOfKeysToProduce, executor, p);
+        logger.info(fmt("At threshold %d, submitted %d tasks", currentThreshold, numberOfKeysToProduce));
+        logger.info(fmt("Cores [%d/%d]", numberOfKeysToProduce, AVAILABLE_CORES));
+        logger.info("Submitting {} of key generation tasks", numberOfKeysToProduce);
+        executor.schedule(new KeyProduceTask(cache), 0, TimeUnit.SECONDS);
+//        submitTasks(numberOfKeysToProduce, executor, p);
+
     }
 
-    private void submitTasks(int n, ExecutorService x, Runnable task) {
+    private void submitTasks(int n, ScheduledExecutorService x, Runnable task) {
         for (int i = 0; i < n; i++) {
-            x.submit(task);
+//            x.submit(task);
+//            x.schedule(task, 0, TimeUnit.SECONDS);
         }
     }
 
