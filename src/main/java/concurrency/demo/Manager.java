@@ -1,12 +1,10 @@
-package com.securelink.ssh;
+package concurrency.demo;
 
-import static com.securelink.ssh.util.Constants.AVAILABLE_CORES;
-import static com.securelink.ssh.util.Constants.COMPUTED_CAPACITY;
-
-import com.securelink.ssh.task.CacheFillerTask;
-import com.securelink.ssh.task.CacheStatusTask;
-import com.securelink.ssh.util.CustomThreadFactory;
-import com.securelink.ssh.util.KeyCache;
+import concurrency.demo.task.CacheFillerTask;
+import concurrency.demo.task.CacheStatusTask;
+import concurrency.demo.util.CustomThreadFactory;
+import concurrency.demo.util.KeyCache;
+import concurrency.demo.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +75,7 @@ public class Manager {
     }
 
     private void initCache() {
-        cache = new KeyCache(COMPUTED_CAPACITY);
+        cache = new KeyCache(Constants.COMPUTED_CAPACITY);
     }
 
     private void initConsumer() {
@@ -85,7 +83,7 @@ public class Manager {
     }
 
     private void initProducer() {
-        producerExecutor = Executors.newFixedThreadPool(AVAILABLE_CORES, new CustomThreadFactory("producer"));
+        producerExecutor = Executors.newFixedThreadPool(Constants.AVAILABLE_CORES, new CustomThreadFactory("producer"));
     }
 
 

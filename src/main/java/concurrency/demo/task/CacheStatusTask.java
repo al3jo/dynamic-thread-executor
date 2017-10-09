@@ -1,11 +1,11 @@
-package com.securelink.ssh.task;
+package concurrency.demo.task;
 
-import com.securelink.ssh.util.KeyCache;
+import concurrency.demo.util.KeyCache;
+import concurrency.demo.util.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.securelink.ssh.util.Constants.COMPUTED_CAPACITY;
-import static com.securelink.ssh.util.Utils.fmt;
+import static concurrency.demo.util.Utils.fmt;
 
 import java.util.StringJoiner;
 
@@ -27,7 +27,7 @@ public class CacheStatusTask implements Runnable {
         joiner.add("")
             .add("STATUS")
 //            .add(fmt("At threshold %d, submitted %d tasks", currentThreshold, numberOfKeysToProduce))
-            .add(fmt("Queue [%d/%d]", cache.getSize(), COMPUTED_CAPACITY))
+            .add(fmt("Queue [%d/%d]", cache.getSize(), Constants.COMPUTED_CAPACITY))
 //            .add(fmt("Cores [%d/%d]", numberOfKeysToProduce, AVAILABLE_CORES))
             .add(fmt("Time elapsed %s", fmt(System.currentTimeMillis() - startTime)));
         logger.info(joiner.toString());

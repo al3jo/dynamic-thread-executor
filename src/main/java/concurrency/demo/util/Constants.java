@@ -1,4 +1,4 @@
-package com.securelink.ssh.util;
+package concurrency.demo.util;
 
 public class Constants {
     public static final int KEYS_PER_CORE = 20;

@@ -1,4 +1,4 @@
-package com.securelink.ssh.util;
+package concurrency.demo.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

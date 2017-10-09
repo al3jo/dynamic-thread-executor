@@ -1,7 +1,7 @@
-package com.securelink.ssh.task;
+package concurrency.demo.task;
 
-import com.securelink.ssh.util.KeyCache;
-import com.securelink.ssh.util.KeyGenerator;
+import concurrency.demo.util.KeyCache;
+import concurrency.demo.util.KeyGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
